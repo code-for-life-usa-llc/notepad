@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <title>Note Pad</title>
+
+    <style>
+        body{
+            background: black;
+            color: white;
+        }
+
+        #submitButton{
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div align="center">
+        <h1>Note Pad</h1>
+
+        <div class="input-group mb-3">
+            <input id="userInput" type="text" class="form-control" placeholder="Write your new task here" aria-label="Add a task" >
+            <span class="input-group-text" id="submitButton">Add Task</span>
+        </div>
+    </div>
+
+    <div>
+        <ul id="toDoList">
+
+        </ul>
+    </div>
+
+    <script>
+        const input = document.getElementById('userInput');
+        const submitButton = document.getElementById('submitButton');
+        const toDoList = document.getElementById('toDoList');
+
+        submitButton.addEventListener('click', addTask);
+
+        function addTask(){
+
+            // Stops a user from adding empty tasks
+            if(input.value === ""){
+                alert('Please add a task before submitting');
+                return;
+            }
+
+            const listArray = [].slice.call(toDoList.getElementsByTagName('li'));
+           // Next step is to check array of list items for the next item to be added which is in the value input.value
+
+            let newListItem = document.createElement('li'); // Create new list item
+
+            newListItem.appendChild(document.createTextNode(input.value)); // Add text to list item
+            
+            toDoList.appendChild(newListItem); // Add list item to list
+
+            // Clears the input field for the next task
+            input.value = "";
+
+
+
+        }
+
+
+    </script>
+ 
+    
+
+
+    
+</body>
+</html>
